@@ -3,10 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welkom to infiniteloop.engineering!</title>
+    <title>Atmosphere of the Earth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+        }
+        .slideshow-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .active {
+            opacity: 1;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .arrow {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .stop-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thanks for visiting infiniteloop.engineering!</h1>
-    <p>Welcome</p>
+
+    <div class="slideshow-container" id="slideshow">
+        <div class="slide active" style="background-image: url('atmosphere1.jpg');"></div>
+        <div class="slide" style="background-image: url('atmosphere2.jpg');"></div>
+        <div class="slide" style="background-image: url('night1.jpg');"></div>
+        <div class="slide" style="background-image: url('atmosphere3.jpg');"></div>
+
+        <div class="controls" id="controls">
+            <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+            <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <button class="stop-btn" id="stop-btn" onclick="toggleSlideshow()">||</button>
+    </div>
+
+    <script>
+        let slides = document.querySelectorAll(".slide");
+        let currentIndex = 0;
+        let interval = setInterval(nextSlide, 60000); // Auto-switch every 1 min
+        let isPlaying = true;
+        let controls = document.getElementById("controls");
+        let stopBtn = document.getElementById("stop-btn");
+        let hideTimeout;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function toggleSlideshow() {
+            if (isPlaying) {
+                clearInterval(interval);
+		    stopBtn.textContent = ">";
+            } else {
+                interval = setInterval(nextSlide, 60000);
+                stopBtn.textContent = "||";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function showControls() {
+            controls.style.opacity = "1";
+            stopBtn.style.opacity = "1";
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(hideControls, 1000); // Hide after 3 seconds
+        }
+
+        function hideControls() {
+            controls.style.opacity = "0";
+            stopBtn.style.opacity = "0";
+        }
+
+        document.getElementById("slideshow").addEventListener("mousemove", showControls);
+    </script>
+
 </body>
 </html>
+
