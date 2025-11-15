@@ -6,7 +6,7 @@
     <title>How to self-sustain off the Earth?🤔</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { overflow: hidden; font-family: sans-serif; color: white; }
+        body { overflow: auto; font-family: sans-serif; color: white; }
         .slideshow-container { width: 100vw; height: 100vh; position: relative; }
         .slide { width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out; background-size: cover; background-position: center; }
         .active { opacity: 1; }
@@ -19,26 +19,23 @@
 
         /* New introduction panel */
         .intro-panel {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
+            margin: 60px auto;
             width: 60vw;
             max-width: 900px;
-            max-height: 60vh;
             background: rgba(0,0,0,0.55);
             padding: 30px 40px;
             backdrop-filter: blur(8px);
             font-size: 18px;
             line-height: 1.6;
-            overflow-y: auto;
             border-radius: 12px;
         }
         .intro-panel h2 {
             margin-bottom: 10px;
             font-size: 26px;
         }
-    </style>
+    .dash { border-left: 4px dashed #fff; padding-left: 12px; margin-left: 4px; }
+        </style>
 </head>
 <body>
     <div class="slideshow-container" id="slideshow">
@@ -61,24 +58,19 @@
     <div class="intro-panel">
         <h2>事業紹介</h2>
         <p>機電情報系分野を幅広く担当可能なフリーランスエンジニアです。</p>
-        <br/>
         <p><strong>対応可能分野</strong><br>
         - 電気・電子回路（マイコン等情報系ハードウェア含む）<br>
         - ITシステム（ソフトウェア全般）<br>
         - 機械設備（小規模ロボット等）</p>
 
         <p>各種システム・装置の研究・設計・開発・製作のご相談を承っております。</p>
-        <br/>
 
         <p><strong>屋号：</strong>infiniteloop.engineering（インフィニットループドットエンジニアリング）<br>
         <strong>住所：</strong>東京都千代田区神田多町2丁目1 神田東山ビル7階<br>
         <strong>メール：</strong>mail@infiniteloop.engineering</p>
-        <br/>
-
-        <p><s>2025年7月1日 スロットに空きがありますので、各種案件に直ちにご対応できます。
-        ご連絡頂ければ幸いです！</s></p>
+        
+<p><s>2025年7月1日 スロットに空きがありますので、各種案件に直ちにご対応できます。 ご連絡頂ければ幸いです！</s></p> 
         <p>スロット空き状況につきましてはお気軽にメールでご確認ください。</p>
-        <br/>
 
         <p>また、持続可能な社会の実現に向けて、リニューアブル（再生可能）なエネルギー生産量増大を実現するための技術研究も行っております（主に自律性があり移動可能な水上太陽光発電設備由来の水素製造・まとまった成果が出ればweb上で公開予定）。興味のある方はぜひお声がけください！</p>
     </div>
