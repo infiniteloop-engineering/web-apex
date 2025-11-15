@@ -5,104 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to self-sustain off the Earth?🤔</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            overflow: hidden;
-        }
-        .slideshow-container {
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-        }
-        .slide {
-            width: 100%;
-            height: 100%;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; font-family: sans-serif; color: white; }
+        .slideshow-container { width: 100vw; height: 100vh; position: relative; }
+        .slide { width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out; background-size: cover; background-position: center; }
+        .active { opacity: 1; }
+        .controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); opacity: 0; transition: opacity 0.3s ease; }
+        .arrow { background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 15px; font-size: 24px; cursor: pointer; border-radius: 50%; }
+        .stop-btn { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; border-radius: 5px; opacity: 0; transition: opacity 0.3s ease; }
+        .typing-container { font-size: 24px; font-weight: bold; display: inline-block; white-space: nowrap; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); color:white; position: absolute; left: 50px; top: 50px; z-index: 999; }
+        .cursor { display: inline-block; width: 8px; height: 24px; background-color: white; margin-left: 5px; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* New introduction panel */
+        .intro-panel {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
-        .active {
-            opacity: 1;
-        }
-        .controls {
-            position: absolute;
-            top: 50%;
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: rgba(0,0,0,0.45);
+            padding: 20px 40px;
+            backdrop-filter: blur(6px);
+            font-size: 18px;
+            line-height: 1.6;
+            max-height: 45vh;
+            overflow-y: auto;
         }
-        .arrow {
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-        .stop-btn {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .typing-container {
-            font-size: 24px;
-            font-weight: bold;
-            display: inline-block;
-            white-space: nowrap;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Dark shadow */
-            color:white;
-
-	    position: absolute;
-	    left: 50px;
-	    top: 50px;
-            font-size: 24px;
-            font-weight: bold;
-            display: inline-block;
-            white-space: nowrap;
-	    z-index: 999;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 24px;
-            background-color: white;
-            margin-left: 5px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+        .intro-panel h2 {
+            margin-bottom: 10px;
+            font-size: 26px;
         }
     </style>
 </head>
 <body>
-
     <div class="slideshow-container" id="slideshow">
         <div class="slide active" style="background-image: url('atmosphere1.jpg');"></div>
         <div class="slide" style="background-image: url('atmosphere2.jpg');"></div>
@@ -113,7 +48,6 @@
             <button class="arrow left" onclick="prevSlide()">&#10094;</button>
             <button class="arrow right" onclick="nextSlide()">&#10095;</button>
         </div>
-
         <button class="stop-btn" id="stop-btn" onclick="toggleSlideshow()">||</button>
     </div>
 
@@ -121,10 +55,30 @@
         <span id="text"></span><span class="cursor"></span>
     </div>
 
+    <div class="intro-panel">
+        <h2>事業紹介</h2>
+        <p>機電情報系分野を幅広く担当可能なフリーランスエンジニアです。</p>
+        <p><strong>対応可能分野</strong><br>
+        - 電気・電子回路（マイコン等情報系ハードウェア含む）<br>
+        - ITシステム（ソフトウェア全般）<br>
+        - 機械設備（小規模ロボット等）</p>
+
+        <p>各種システム・装置の研究・設計・開発・製作のご相談を承っております。</p>
+
+        <p><strong>屋号：</strong>infiniteloop.engineering（インフィニットループドットエンジニアリング）<br>
+        <strong>住所：</strong>東京都千代田区神田多町2丁目1 神田東山ビル7階<br>
+        <strong>メール：</strong>mail@infiniteloop.engineering</p>
+
+        <p>2025年7月1日 スロットに空きがありますので、各種案件に直ちにご対応できます。<br>
+        ご連絡頂ければ幸いです！スロット空き状況につきましてはお気軽にメールでご確認ください。</p>
+
+        <p>また、持続可能な社会の実現に向けて、リニューアブル（再生可能）なエネルギー生産量増大を実現するための技術研究も行っております（主に自律性があり移動可能な水上太陽光発電設備由来の水素製造・まとまった成果が出ればweb上で公開予定）。興味のある方はぜひお声がけください！</p>
+    </div>
+
     <script>
         let slides = document.querySelectorAll(".slide");
         let currentIndex = 0;
-        let interval = setInterval(nextSlide, 60000); // Auto-switch every 1 min
+        let interval = setInterval(nextSlide, 60000);
         let isPlaying = true;
         let controls = document.getElementById("controls");
         let stopBtn = document.getElementById("stop-btn");
@@ -149,7 +103,7 @@
         function toggleSlideshow() {
             if (isPlaying) {
                 clearInterval(interval);
-		    stopBtn.textContent = ">";
+                stopBtn.textContent = ">";
             } else {
                 interval = setInterval(nextSlide, 60000);
                 stopBtn.textContent = "||";
@@ -161,7 +115,7 @@
             controls.style.opacity = "1";
             stopBtn.style.opacity = "1";
             clearTimeout(hideTimeout);
-            hideTimeout = setTimeout(hideControls, 1000); // Hide after 3 seconds
+            hideTimeout = setTimeout(hideControls, 1000);
         }
 
         function hideControls() {
@@ -179,12 +133,11 @@
             if (index < text.length) {
                 textElement.innerHTML += text.charAt(index);
                 index++;
-                setTimeout(typeText, 30); // Adjust speed here
+                setTimeout(typeText, 30);
             }
         }
 
-        setTimeout(typeText, 500); // Delay before starting
+        setTimeout(typeText, 500);
     </script>
-
 </body>
 </html>
